@@ -36,3 +36,80 @@
     transform: rotate(360deg);
   }
 }
+
+.nav-bar {
+  background: rgb(36, 41, 46);
+  height: 10vh;
+}
+
+.searchOption {
+  float: left;
+  margin: 1.2rem;
+  margin-right: 2rem;
+}
+
+.head-titles {
+  color: rgb(255, 255, 242);
+  display: flex;
+}
+
+.head-titles > h4 {
+  padding-right: 15px;
+}
+.fa {
+  color: black;
+}
+.fa-github {
+  margin-right: 20px;
+}
+.icons {
+  margin-top: 1.4rem;
+  margin-left: 38rem;
+}
+.icons > i {
+  margin-right: 1.5rem;
+}
+.fa-github,
+.icons > .fa {
+  color: white;
+}
+.item1 {
+  grid-area: header;
+}
+.item2 {
+  grid-area: menu;
+}
+.item2 > .fa-user-circle {
+  height: 200px;
+  width: 200px;
+}
+
+.item3 {
+  grid-area: main;
+}
+.item4 {
+  grid-area: footer;
+}
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    "menu header header header header header"
+    "menu main main main main main"
+    "menu footer footer footer footer footer";
+  background-color: #ffffff;
+  padding: 10px;
+}
+
+.grid-container > div {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+
+.menu-profile-text {
+  font-size: 1rem;
+}
+
+.title-profile-text {
+  font-size: 1.2rem;
+}
