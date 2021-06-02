@@ -13,7 +13,7 @@ export default class Body extends Component {
         <div className="grid-container">
           <div className="item1">
             <div className="title-profile-text">
-              <FaBookOpen />
+              <FaBookOpen className="icon-bookopen" />
               Overview &nbsp;
               <i className="fa fa-book"></i>
               Repositories &nbsp;
@@ -43,7 +43,6 @@ export default class Body extends Component {
           </div>
 
           <div className="item3">Main</div>
-          <div className="item4">Footer</div>
         </div>
       </div>
     );
