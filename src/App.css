@@ -109,11 +109,22 @@
 }
 
 .title-profile-text {
+  display: flex;
   font-size: 1.2rem;
+}
+.link-style {
+  text-decoration: inherit;
+}
+.list-style {
+  list-style-type: none;
 }
 
 i:hover,
 h4:hover,
 .icon-bookopen:hover {
   cursor: pointer;
+}
+
+.sort-button {
+  margin-right: 10px;
 }
