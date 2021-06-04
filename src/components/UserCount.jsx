@@ -1,32 +1,27 @@
 import React, { Component } from "react";
 import axios from "axios";
+import EditDisplay from "./EditDisplay";
+import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
+import UserCountIcons from "./UserCountIcons";
 
 export default class UserCount extends Component {
   constructor() {
     super();
     this.state = {
-      userCount: [{ followers: "", following: "" }],
-      starredNum: [{ stargazers_count: "" }],
       userName: [{ name: "", login: "" }],
     };
   }
 
   componentDidMount() {
     axios.get(`https://api.github.com/users/Akrit08`).then((res) => {
-      this.setState({ userCount: res.data });
-    });
-    axios.get(`https://api.github.com/users/akrit08/starred`).then((res) => {
-      this.setState({ starredNum: res.data });
-    });
-    axios.get(`https://api.github.com/users/akrit08`).then((res) => {
       this.setState({ userName: res.data });
     });
   }
 
   editProfile = () => {
-    axios.patch(`https://api.github.com/user`).then((res) => {
-      this.setState({ userName: res.data });
-    });
+    // axios
+    //   .patch(`https://api.github.com/user`)
+    //   .then((res) => this.setState({ userName: res.data }));
   };
 
   handleOnEdit = () => {
@@ -39,21 +34,17 @@ export default class UserCount extends Component {
         <br />
         {this.state.userName.login}
         <br />
-        <button
-          className="btn-editProfile"
-          onClick={() => {
-            this.editProfile();
-          }}
-        >
-          Edit Profile
-        </button>
-        <p className="menu-profile-text">
-          <i className="fa fa-users"></i>
-          {this.state.userCount.followers}&nbsp;.
-          {this.state.userCount.following}&nbsp;
-          <i className="fa fa-star"></i>
-          {this.state.userName.public_repos}
-        </p>
+        <UserCountIcons />
+        <BrowserRouter>
+          <Link to="/edit-profile" className="link-style">
+            <button>Edit Profile</button>
+          </Link>
+
+          <Switch>
+            <Route path={"/edit-profile"} component={EditDisplay} exact />;
+            <Route path={"/"} component={UserCountIcons}></Route>
+          </Switch>
+        </BrowserRouter>
       </div>
     );
   }
