@@ -128,3 +128,8 @@ h4:hover,
 .sort-button {
   margin-right: 10px;
 }
+
+.info-display > p {
+  height: 5px;
+  font-size: 5px;
+}

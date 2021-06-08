@@ -3,12 +3,13 @@ import axios from "axios";
 import EditDisplay from "./EditDisplay";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import UserCountIcons from "./UserCountIcons";
-
+import InfoDisplay from "./InfoDisplay";
 export default class UserCount extends Component {
   constructor() {
     super();
     this.state = {
       userName: [{ name: "", login: "" }],
+      editButtonVisibility: true,
     };
   }
 
@@ -18,10 +19,11 @@ export default class UserCount extends Component {
     });
   }
 
-  editProfile = () => {
-    // axios
-    //   .patch(`https://api.github.com/user`)
-    //   .then((res) => this.setState({ userName: res.data }));
+  editProfileClickHandler = () => {
+    this.setState({ editButtonVisibility: !this.state.editButtonVisibility });
+  };
+  saveBtnHandler = (visibility) => {
+    this.setState({ editButtonVisibility: visibility });
   };
 
   handleOnEdit = () => {
@@ -34,15 +36,33 @@ export default class UserCount extends Component {
         <br />
         {this.state.userName.login}
         <br />
-        <UserCountIcons />
+
         <BrowserRouter>
           <Link to="/edit-profile" className="link-style">
-            <button>Edit Profile</button>
+            {this.state.editButtonVisibility ? (
+              <div>
+                <button onClick={this.editProfileClickHandler}>
+                  Edit Profile
+                </button>
+                <UserCountIcons />
+                <InfoDisplay />
+              </div>
+            ) : (
+              ""
+            )}
           </Link>
 
           <Switch>
-            <Route path={"/edit-profile"} component={EditDisplay} exact />;
-            <Route path={"/"} component={UserCountIcons}></Route>
+            <Route
+              path={"/edit-profile"}
+              children={
+                <EditDisplay
+                  editButtonVisibility={this.state.editButtonVisibility}
+                  saveBtnHandler={this.saveBtnHandler}
+                ></EditDisplay>
+              }
+              exact
+            />
           </Switch>
         </BrowserRouter>
       </div>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-
+  
 export default class UserCountIcons extends Component {
   constructor() {
     super();
@@ -10,6 +10,7 @@ export default class UserCountIcons extends Component {
       userName: [],
     };
   }
+
   componentDidMount() {
     axios.get(`https://api.github.com/users/Akrit08`).then((res) => {
       this.setState({ userCount: res.data });

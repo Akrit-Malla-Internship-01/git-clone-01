@@ -4,12 +4,11 @@ import { FaBookOpen } from "react-icons/fa";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import Repo from "./Repo";
 import Projects from "./Projects";
-import NotFound from "./NotFound";
 import UserCount from "./UserCount";
 
 export default class Body extends Component {
   projectHandler = () => {
-    if (this.state.project == 0) {
+    if (this.state.project === 0) {
       console.log("You don't have any projects yet.");
     }
     <button className="btn-newProject">New Project</button>;
@@ -101,7 +100,7 @@ export default class Body extends Component {
                 <Switch>
                   <Route path={"/repo"} component={Repo} exact />
                   <Route path={"/projects"} component={Projects} exact />
-                  <Route component={NotFound} />
+                  {/* <Route component={NotFound} /> */}
                 </Switch>
               </BrowserRouter>
             </div>
